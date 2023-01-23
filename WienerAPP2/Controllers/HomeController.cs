@@ -67,7 +67,23 @@ namespace WienerAPP2.Controllers
         [HttpPost]
         public ActionResult Create(Partner partner)
         {
-            if (TryValidateModel(partner))
+            db.Open();
+            var _partner = db.GetOnePartner(partner.ExternalCode);
+            db.Close();
+            if (_partner.Count() > 0)
+            {
+                foreach (var key in ModelState.Keys)
+                {
+                    TempData[key] = ModelState[key].Value.AttemptedValue;
+                }
+
+                List<string> errorList = new List<string>();
+                errorList.Add("Partner with that external code already exists");
+                TempData["Errors"] = errorList;
+                TempData.Keep("Errors");
+                return RedirectToAction("NewPartner");
+            }
+            else if (TryValidateModel(partner))
             {
                 partner.CreatedAtUtc = DateTime.UtcNow;
                 db.Open();
@@ -120,7 +136,7 @@ namespace WienerAPP2.Controllers
                 errorList.Add("Partner not found, please try again");
                 TempData["Errors"] = errorList;
                 TempData.Keep("Errors");
-                return RedirectToAction("Contact");
+                return RedirectToAction("NewPolicy");
             }
             else if (TryValidateModel(policy))
             {
