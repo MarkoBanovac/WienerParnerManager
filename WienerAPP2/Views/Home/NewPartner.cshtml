@@ -1,0 +1,67 @@
+﻿
+@using System.Web.Mvc
+
+@{
+    ViewBag.Title = "Partner Form";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@if (TempData["Errors"] != null)
+{
+    foreach (var error in (List<string>)TempData["Errors"])
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+}
+<form method="post" action="Create">
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input class="form-control" type="text" name="FirstName" id="FirstName" value="@TempData["FirstName"]"/>
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input class="form-control" type="text" name="LastName" id="LastName" value="@TempData["LastName"]"/>
+    </div>
+    <div class="form-group">
+        <label for="Address">Address:</label>
+        <input class="form-control" type="text" name="Address" id="Address" value="@TempData["Address"]"/>
+    </div>
+    <div class="form-group">
+        <label for="PartnerNumber">Partner Number:</label>
+        <input class="form-control" type="text" name="PartnerNumber" id="PartnerNumber" value="@TempData["PartnerNumber"]"/>
+    </div>
+    <div class="form-group">
+        <label for="CroatianPIN">Croatian PIN:</label>
+        <input class="form-control" type="text" name="CroatianPIN" id="CroatianPIN" value="@TempData["CroatianPIN"]"/>
+    </div>
+    <div class="form-group">
+        <label for="PartnerTypeId">Partner Type Id:</label>
+        <select name="PartnerTypeId" id="PartnerTypeId">
+            <option value="1">Personal</option>
+            <option value="2">Legal</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="CreateByUser">Created By User:</label>
+        <input class="form-control" type="text" name="CreateByUser" id="CreateByUser" value="@TempData["CreateByUser"]"/>
+    </div>
+    <div class="form-group">
+        <label for="IsForeign">Is Foreign:</label>
+        <input type="checkbox" name="IsForeign" id="IsForeign" value="true" />
+    </div>
+    <div class="form-group">
+        <label for="ExternalCode">External Code:</label>
+        <input class="form-control" type="text" name="ExternalCode" id="ExternalCode" value="@TempData["ExternalCode"]"/>
+    </div>
+    <div class="form-group">
+        <label for="Gender">Gender:</label>
+        <select name="Gender" id="Gender">
+            <option value="M">M</option>
+            <option value="F">F</option>
+            <option value="N">N</option>
+        </select>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Create Partner" />
+
+</form>

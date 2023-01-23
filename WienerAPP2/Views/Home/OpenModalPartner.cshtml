@@ -1,0 +1,29 @@
+﻿@using System.Linq;
+@{
+    ViewBag.Title = "Partner";
+}
+
+@foreach (var Partner in Model)
+{
+<ul class="list-group" style="padding-top: 5vh">
+    <li class="list-group-item">@("Name: " + Partner.FirstName + " " + Partner.LastName)</li>
+    <li class="list-group-item">@("Address: " + Partner.Address)</li>
+    <li class="list-group-item">@("Partner Number: " + Partner.PartnerNumber)</li>
+    <li class="list-group-item">@("Croatian PIN: " + Partner.CroatianPIN)</li>
+    @if (Partner.PartnerTypeId == "1")
+    {
+        <li class="list-group-item">@("Partner Type: Personal")</li>
+    }
+    else if (Partner.PartnerTypeId == "2")
+    {
+        <li class="list-group-item">@("Partner Type: Legal")</li>
+    }
+    <li class="list-group-item">@("Created At: " + Partner.CreatedAtUtc)</li>
+    <li class="list-group-item">@("Created By: " + Partner.CreateByUser)</li>
+    <li class="list-group-item">@("External Code: " + Partner.ExternalCode)</li>
+    <li class="list-group-item">@("Is Foreign: " + Partner.IsForeign)</li>
+    <li class="list-group-item">@("Gender: " + Partner.Gender)</li>
+</ul>
+}
+
+

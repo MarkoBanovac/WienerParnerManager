@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Wiener Partner Manager</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <base href="/Home/" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="margin: 0; padding: 0; width: 100%;">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #E91620; max-height: 7vh;">
+        <img src="~/Picture/logo.png" class="img-fluid" alt="Responsive image" style="max-height: 7vh; max-width: 7vh">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav" style="padding-left: 75vw">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/" onclick="Index" style="font-size:1vw;">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="NewPartner" style="font-size:1vw;">Add Partner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="NewPolicy" style="font-size:1vw;">Add Policy</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy;Wiener osiguranje Vienna Insurance Group, @DateTime.Now.Year</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="path/to/bootstrap.js"></script>
+    <script src="~/Scripts/FetchPartner.js"></script>
+</body>
+</html>
